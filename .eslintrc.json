@@ -1,0 +1,70 @@
+{
+    "extends": "eslint-config-airbnb",
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "indent": "off",
+        // Don't need this for react-native src.
+        "no-console": 0,
+        "no-alert": 0,
+        "camelcase": 0,
+        // Make destructure available:
+        "no-unused-vars": ["error", {
+            "vars": "local",
+            "args": "after-used",
+            "varsIgnorePattern": "_"
+        }],
+
+        // Disable this because it breaks mobx with state-less component.
+        "prefer-arrow-callback": 0,
+        "react/prefer-stateless-function": 0,
+
+        // Move properties before.
+        "react/sort-comp": [2, {
+            "order": [
+                "static-methods",
+                "constructor",
+                "lifecycle",
+                "everything-else",
+                "/^on.+$/",
+                "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+                "/^render.+$/",
+                "render"
+            ]
+        }],
+        // Disable rules for most usage in react-native.
+        "react/jsx-filename-extension": 0,
+        "global-require": 0,
+        "no-plusplus": 0,
+        "react/no-multi-comp": 0,
+        "class-methods-use-this": 0,
+        "no-bitwise": 0,
+        "no-trailing-spaces": "off",
+        "react/jsx-indent": 0,
+        "react/jsx-indent-props": 0,
+        "max-len": "off",
+        "no-nested-ternary": "off",
+        "react/jsx-boolean-value": 0,
+        "no-underscore-dangle": "off",
+        "no-else-return": "off",
+        "react/forbid-prop-types": "off",
+        "key-spacing": "off"
+    },
+    "plugins": [
+        "react", "import"
+    ],
+    "settings": {
+        "import/parser": "babel-eslint"
+    },
+    "globals": {
+        "__DEV__": true,
+        "__APP__": true,
+        "__ANDROID__": true,
+        "__IOS__": true,
+        "__storage": null
+    }
+}
